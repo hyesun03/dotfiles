@@ -64,4 +64,16 @@ else
     echo "<Vundle> already INSTALLED... skipping..."
 fi
 
+############################
+##### SETUP git config #####
+############################
+echo "===== SETUP .gitconfig if not exists ====="
+if [ ! -f $HOME/.gitconfig ]; then
+    read -p "ENTER your email for git > " email
+    read -p "ENTER your name for git > " name
+    git config --global --replace-all user.email "$email"
+    git config --global --replace-all user.name "$name"
+else
+    echo "<.gitconfig> already EXISTS"
+fi
 
