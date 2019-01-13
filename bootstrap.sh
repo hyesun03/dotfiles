@@ -23,6 +23,9 @@ packages=(
     pyenv
     pyenv-virtualenv
     zsh-syntax-highlighting
+    gnupg
+    gnupg2
+    pinentry-mac
 )
 
 echo "===== INSTALL packages with homebrew ====="
@@ -73,6 +76,8 @@ if [ ! -f $HOME/.gitconfig ]; then
     read -p "ENTER your name for git > " name
     git config --global --replace-all user.email "$email"
     git config --global --replace-all user.name "$name"
+    git config --global user.signingkey 2F24D83118381583
+    git config --global commit.gpgsign true
 else
     echo "<.gitconfig> already EXISTS"
 fi
