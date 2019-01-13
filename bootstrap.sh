@@ -22,10 +22,10 @@ packages=(
     gradle
     pyenv
     pyenv-virtualenv
+    zsh-syntax-highlighting
 )
 
 echo "===== INSTALL packages with homebrew ====="
-# brew install "${packages[@]}"
 for package in "${packages[@]}"; do
     package_name=$( echo "$package" | awk '{print $1}' )
     if brew list "$package_name" > /dev/null 2>&1; then
@@ -34,7 +34,6 @@ for package in "${packages[@]}"; do
         brew install "$package"
     fi
 done
-
 
 ######################################
 ##### INSTALL Command Line Tools #####
@@ -46,7 +45,6 @@ else
     echo "<Command Line Tools> already INSTALLED... skipping..."
 fi
 
-
 #############################
 ##### INSTALL oh-my-zsh #####
 #############################
@@ -56,4 +54,14 @@ if [ ! -d "$HOME/.oh-my-zsh" ]; then
 else
     echo "<oh-my-zsh> already INSTALLED... skipping..."
 fi
+
+##########################
+##### INSTALL Vundle #####
+##########################
+if [ ! -d "$HOME/.vim/bundle/Vundle.vim" ]; then
+    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim	
+else
+    echo "<Vundle> already INSTALLED... skipping..."
+fi
+
 
