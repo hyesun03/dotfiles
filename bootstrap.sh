@@ -7,7 +7,9 @@
 
 echo "===== INSTALL homebrew if not installed ====="
 if test ! $(command -v brew); then
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+else
+    echo "<homebrew> already INSTALLED... skipping..."
 fi
 
 packages=(
@@ -28,7 +30,7 @@ echo "===== INSTALL packages with homebrew ====="
 for package in "${packages[@]}"; do
     package_name=$( echo "$package" | awk '{print $1}' )
     if brew list "$package_name" > /dev/null 2>&1; then
-        echo "$package_name already installed... skipping."
+        echo "<$package_name> already INSTALLED... skipping..."
     else
         brew install "$package"
     fi
@@ -42,5 +44,7 @@ done
 echo "===== INSTALL Command Line Tools if not installed ====="
 if ! command -v xcodebuild > /dev/null; then
     xcode-select --install
+else
+    echo "<Command Line Tools> already INSTALLED... skipping..."
 fi
 
