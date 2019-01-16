@@ -116,3 +116,8 @@ eval "$(pyenv virtualenv-init -)"
 
 export GPG_TTY=$(tty)
 
+export PATH="$HOME/.cargo/bin:$PATH"
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
